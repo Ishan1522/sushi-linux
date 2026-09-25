@@ -1,0 +1,9 @@
+hyprland
+sddm
+kitty
+wofi
+waybar
+xdg-desktop-portal-hyprland
+polkit-kde-agent
+qt5-wayland
+qt6-wayland

@@ -24,7 +24,7 @@ show_info() {
 
     echo ""
     echo "===== Sushi Linux: Machine Info ====="
-    echo "Hostname:     $(hostname)"
+    echo "Hostname:     $(cat /etc/hostname)"
     echo "Interface:    $iface"
     echo "MAC address:  $(cat /sys/class/net/"$iface"/address)"
     echo "IP address:   $(ip -4 addr show "$iface" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')"
