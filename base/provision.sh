@@ -15,7 +15,7 @@ install_packages() {
 
 setup_dotfiles() {
     echo "→ linking dotfiles"
-    stow -d base/dotfiles -t "$HOME" .
+    stow -d base/dotfiles -t "$HOME" zsh
 }
 
 main() {
