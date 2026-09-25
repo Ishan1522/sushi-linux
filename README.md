@@ -39,9 +39,13 @@ cd sushi-linux
 ## Status
 
 - [x] Manual Arch install verified working (partition → pacstrap → chroot → GRUB → boot)
-- [x] `base/provision.sh` — networking, packages
-- [ ] `base/dotfiles/` — shell + editor configs
-- [ ] Test `provision.sh` against a fresh VM snapshot
-- [ ] `install.sh` — scripted partition/pacstrap/GRUB
-- [ ] `desktop/` role
-- [ ] `server/` role
+- [x] `install.sh` — scripted partition/pacstrap/GRUB, verified end-to-end from blank disk
+- [x] `base/provision.sh` — networking, packages, dotfiles, machine info panel
+- [x] `server/provision.sh` — Docker, Tailscale, btop
+- [ ] `desktop/provision.sh` — Hyprland, SDDM, kitty, wofi, waybar
+  - Packages install clean, SDDM enables and shows graphical login with Hyprland listed as a session
+  - **Known issue**: default SDDM theme isn't clickable/interactive when tested on this Proxmox VM (likely a software-rendering quirk, not necessarily a real bug) — needs verification on real hardware (Framework) once it arrives
+  - Untested: whether Hyprland itself launches successfully after login (blocked by the SDDM theme issue above)
+- [ ] `desktop/` — test on actual Framework laptop once it arrives
+- [ ] Linux Mango
+- [ ] Aanti Linux
