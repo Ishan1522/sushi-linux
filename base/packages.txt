@@ -1,0 +1,5 @@
+networkmanager
+git
+neovim
+zsh
+stow
