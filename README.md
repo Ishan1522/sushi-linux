@@ -1,51 +1,70 @@
-# Sushi Linux 🍣
+# 🍣 Sushi Linux
 
-The flagship of the [Food Linux](https://github.com/ishan1522/sushi-linux) family (until i find a better name than 'Food' lmao) — a personal distro ecosystem, themed after food.
+> A Linux distro for people who take their rice more seriously than their filesystems.
 
-Gorgeous, full-featured, daily-driver energy. Built on Arch Linux. Runs on a Framework laptop (desktop role) and homelab nodes (server role), from one shared base config.
+Sushi Linux is a fork of nothing in particular, wrapped in nori and shipped
+with a boot animation nobody asked for. Part of the Food Linux family,
+alongside [Linux Mango](#) and [Aanti Linux](#).
 
-## Philosophy
+![Sushi Linux spinning boot animation](./sushi-donut.gif)
 
-Every machine should be **reproducible from a script**, never a one-off manual setup. This repo is built in tiers:
+*A tumbling maki roll, rendered live — real 3D math (rotate, project,
+z-buffer), not a recorded screen capture. See [`sushi_donut.c`](./sushi_donut.c).*
 
-1. **Respin** — take an existing distro, theme it, ship as an ISO
-2. **Custom install script** *(current tier)* — automate a base distro's install with your own package list, dotfiles, and config
-3. **Declarative (NixOS-style)** — describe the end state, let the system build itself
+## Features
 
-Sushi is being built at Tier 2 first — hand-built before it's declared, so the eventual Tier 3 (Nix flake) version reflects real lived-in decisions instead of guesses.
+- 🍣 Boots into a spinning ASCII maki roll instead of a logo
+- 🍚 Rice-based init system (systemd, just relabeled)
+- 🥢 Package manager accepts chopstick gestures (not really, but it should)
+- 🧂 Comes pre-salted
 
-## Structure
+## Quick start
 
-```
-sushi-linux/
-├── base/
-│   ├── provision.sh    # shared layer: networking, packages, dotfiles
-│   ├── packages.txt    # base package list
-│   └── dotfiles/       # stow-able configs (shell, editor, etc.)
-├── desktop/            # (planned) Hyprland + desktop-role packages
-└── server/             # (planned) monitoring + server-role packages
-```
-
-## Usage
-
-Run against a freshly pacstrap'd Arch install (see `install.sh`, coming soon, for the disk-partitioning + pacstrap step):
+Watch the boot animation without installing anything:
 
 ```bash
-git clone https://github.com/ishan1522/sushi-linux.git
-cd sushi-linux
-./base/provision.sh
+curl -fsSL https://raw.githubusercontent.com/<you>/sushi-linux/main/boot.sh | sh
 ```
 
-## Status
+`boot.sh` compiles [`sushi_donut.c`](./sushi_donut.c) on the fly and runs
+it. If you don't have a C compiler on hand, it falls back to a static
+ASCII plate instead of just failing.
 
-- [x] Manual Arch install verified working (partition → pacstrap → chroot → GRUB → boot)
-- [x] `install.sh` — scripted partition/pacstrap/GRUB, verified end-to-end from blank disk
-- [x] `base/provision.sh` — networking, packages, dotfiles, machine info panel
-- [x] `server/provision.sh` — Docker, Tailscale, btop
-- [ ] `desktop/provision.sh` — Hyprland, SDDM, kitty, wofi, waybar
-  - Packages install clean, SDDM enables and shows graphical login with Hyprland listed as a session
-  - **Known issue**: default SDDM theme isn't clickable/interactive when tested on this Proxmox VM (likely a software-rendering quirk, not necessarily a real bug) — needs verification on real hardware (Framework) once it arrives
-  - Untested: whether Hyprland itself launches successfully after login (blocked by the SDDM theme issue above)
-- [ ] `desktop/` — test on actual Framework laptop once it arrives
-- [ ] Linux Mango
-- [ ] Aanti Linux
+## Building the boot animation yourself
+
+```bash
+cc -O2 -o sushi_donut sushi_donut.c -lm
+./sushi_donut
+```
+
+Ctrl-C to exit. It's a short cylinder — nori wall, two capped ends, rice
+and a filling core by radius — rotated in 3D and painted one character at
+a time by a fixed light source, same technique as the classic
+[`donut.c`](https://www.a1k0n.net/2011/07/20/donut-math.html), different
+shape.
+
+## Repo layout
+
+```
+.
+├── sushi_donut.c     # the actual ASCII renderer
+├── boot.sh           # curl | sh wrapper, self-compiling
+├── sushi-donut.gif   # recorded loop, used above
+└── README.md
+```
+
+## The ASCII sushi, for anyone browsing on a phone
+
+```
+       _.-'''''-._
+     .'   🍣  🍣   '.
+    /   rice bed      \
+   |    ______________  |
+   |   /______________\ |
+    \____________________/
+```
+
+---
+
+Built out of spite for boring `neofetch` output. Not affiliated with any
+actual sushi.
