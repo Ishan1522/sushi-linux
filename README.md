@@ -6,10 +6,10 @@ Sushi Linux is a fork of nothing in particular, wrapped in nori and shipped
 with a boot animation nobody asked for. Part of the Food Linux family,
 alongside [Linux Mango](#) and [Aanti Linux](#).
 
-![Sushi Linux spinning boot animation](./sushi-donut.gif)
+![Sushi Linux spinning boot animation](./sushi.gif)
 
 *A tumbling maki roll, rendered live — real 3D math (rotate, project,
-z-buffer), not a recorded screen capture. See [`sushi_donut.c`](./sushi_donut.c).*
+z-buffer), not a recorded screen capture. See [`sushi.c`](./sushi.c).*
 
 ## Features
 
