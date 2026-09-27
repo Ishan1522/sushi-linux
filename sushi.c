@@ -1,5 +1,5 @@
 /*
- * sushi_donut.c — a rotating torus rendered as ASCII/sushi glyphs,
+ * sushi.c — a rotating torus rendered as ASCII/sushi glyphs,
  * in the spirit of Andy Sloane's donut.c.
  *
  * Build:  cc -O2 -o sushi_donut sushi_donut.c -lm
