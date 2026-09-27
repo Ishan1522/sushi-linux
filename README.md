@@ -67,4 +67,4 @@ shape.
 ---
 
 Built out of spite for boring `neofetch` output. Not affiliated with any
-actual sushi.
+actual sushi (But if any sushi restaurants in the area want to sponsor this distro submit an issue).
